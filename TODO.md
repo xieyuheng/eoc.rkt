@@ -1,3 +1,6 @@
+x-lisp to geometer and canvas,
+as the elisp to emacs.
+
 setup c project
 
 # examples
