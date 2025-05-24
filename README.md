@@ -12,6 +12,12 @@ as the elisp to emacs.
 (3) Use my-lisp to read EOPL,
 so that even the simple part will not be boring.
 
+## Development
+
+```shell
+racket src/main.rkt
+```
+
 ## Contributions
 
 To make a contribution, fork this project and create a pull request.

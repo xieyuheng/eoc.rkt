@@ -1,6 +1,8 @@
 #lang racket
 
-(require "hi.rkt")
+(require "AST.rkt")
 
-(hi)
-(hello)
+(display
+ (list (Int 1)
+       (Int? (Int 1))
+       (Int-value (Int 1))))
