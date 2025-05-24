@@ -1,25 +1,13 @@
 # x-lisp
 
-Dynamicly typed language with GC (optional explicit free).
+## My Motive
 
-`define-generic`
-`define-handler`
-`define-data`
-`match-data`
+(1) Just learn how to write compiler
+for a language like scheme,
+it is a core skill.
 
-```scheme
-(define-data exp?
-  (exp-var (name string?))
-  (exp-fn (name string?) (body exp?))
-  (exp-ap (target exp?) (arg exp?)))
+(2) x-lisp to geometer and canvas,
+as the elisp to emacs.
 
-(match-data exp? exp
-  ((exp-var name) ...)
-  ((exp-fn name body) ...)
-  ((exp-ap target arg) ...))
-```
-
-```scheme
-(declare add (-> nat? nat? nat?))
-(define (add x y) ...)
-```
+(3) Use my-lisp to read EOPL,
+so that even the simple part will not be boring.
