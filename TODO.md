@@ -1,3 +1,5 @@
+be like c project -- use index.rkt and deps.rkt
+
 1 Preliminaries
 2 Integers and Variables
 3 Register Allocation
