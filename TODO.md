@@ -1,5 +1,3 @@
-`(define-data)` macro -- wrap `(struct <name> (...) #:transparent)`
-
 1 Preliminaries
 2 Integers and Variables
 3 Register Allocation
