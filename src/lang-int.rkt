@@ -15,7 +15,7 @@
     [(Prim 'read (list))
      (define r (read))
      (cond [(fixnum? r) r]
-           [else (error 'interpret-exp "read expected an integer" r)])]
+           [else (error 'interpret-exp "expected an integer" r)])]
     [(Prim '- (list e))
      (fx- 0 (interpret-exp e))]
     [(Prim '+ (list e1 e2))

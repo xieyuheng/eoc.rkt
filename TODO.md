@@ -1,5 +1,4 @@
 2 Integers and Variables
-syntax/ -- parse-program
 3 Register Allocation
 4 Booleans and Conditionals
 5 Loops and Dataflow Analysis

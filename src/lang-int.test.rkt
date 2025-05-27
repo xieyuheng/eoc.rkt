@@ -5,31 +5,31 @@
 
 (assert-equal?
  (interpret-lang-int
-  (Program (list) (Int 1)))
+  (parse-program '(program () 1)))
  1)
 
 (assert-equal?
  (interpret-lang-int
-  (Program (list) (Prim '- (list (Int 8)))))
+  (parse-program '(program () (- 8))))
  -8)
 
 (assert-equal?
  (interpret-lang-int
-  (Program (list) (Prim '- (list (Int 8) (Int 4)))))
+  (parse-program '(program () (- 8 4))))
  4)
 
 (assert-equal?
  (pe-lang-int
-  (Program (list) (Prim '- (list (Int 8) (Int 4)))))
- (Program (list) (Int 4)))
+  (parse-program '(program () (- 8 4))))
+ (parse-program '(program () 4)))
 
 (assert-equal?
  (pe-lang-int
-  (Program (list) (Prim '- (list (Int 8) (Prim 'read (list))))))
- (Program (list) (Prim '- (list (Int 8) (Prim 'read (list))))))
+  (parse-program '(program () (- 8 (read)))))
+ (parse-program '(program () (- 8 (read)))))
 
 (assert-equal?
  (interpret-lang-int
   (pe-lang-int
-   (Program (list) (Prim '- (list (Int 8) (Int 4))))))
+   (parse-program '(program () (- 8 4)))))
  4)
