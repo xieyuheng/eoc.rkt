@@ -1,4 +1,3 @@
-modules/class -- define-class
 [lang-var] -- use class
 2 Integers and Variables
 3 Register Allocation
