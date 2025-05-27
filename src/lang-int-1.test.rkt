@@ -1,7 +1,7 @@
 #lang racket
 
 (require "deps.rkt")
-(require "lang-int.rkt")
+(require "lang-int-1.rkt")
 
 (assert-equal?
  (interpret-lang-int

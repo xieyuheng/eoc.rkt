@@ -1,3 +1,6 @@
+[lang-int] -- use class
+modules/class -- define-class
+[lang-var] -- use class
 2 Integers and Variables
 3 Register Allocation
 4 Booleans and Conditionals
