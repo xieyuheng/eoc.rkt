@@ -1,4 +1,3 @@
-[lang-var] -- use class, take env
 2 Integers and Variables
 3 Register Allocation
 4 Booleans and Conditionals
