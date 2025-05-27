@@ -1,15 +1,20 @@
 #lang racket
 
-(require "lang-int.rkt")
+(require "deps.rkt")
 (require "AST.rkt")
+(require "lang-int.rkt")
 
-(display
+(assert-equal?
  (interpret-lang-int
-  (Program (list) (Int 1))))
+  (Program (list) (Int 1)))
+ 1)
 
-;; (list (Int 1)
-;;       (Prim '- (list (Int 8)))
-;;       (Int? (Int 1))
-;;       (Int-value (Int 1))
-;;       (fx+ 1 2)
-;;       (assert (equal? (Int 1) (Int 1))))
+(assert-equal?
+ (interpret-lang-int
+  (Program (list) (Prim '- (list (Int 8)))))
+ -8)
+
+(assert-equal?
+ (interpret-lang-int
+  (Program (list) (Prim '- (list (Int 8) (Int 4)))))
+ 4)
