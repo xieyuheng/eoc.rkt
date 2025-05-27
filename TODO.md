@@ -1,4 +1,7 @@
+[syntax] `parse-program` -- handle `env`
+[lang-int] `interpret-program` -- handle `env`
 lang-var.test -- non-empty env
+
 2 Integers and Variables
 3 Register Allocation
 4 Booleans and Conditionals
