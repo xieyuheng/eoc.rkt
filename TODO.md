@@ -1,4 +1,5 @@
-be like c project -- use index.rkt and deps.rkt
+modules/data
+modules/test
 
 1 Preliminaries
 2 Integers and Variables

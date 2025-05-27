@@ -1,15 +1,9 @@
 #lang racket
 
-(provide define-data
-         assert-equal?
-         assert)
-
-(define-syntax define-data
-  (syntax-rules ()
-    [(_ data-name field-names)
-     (struct data-name field-names #:prefab)]))
-
 (require rackunit)
+
+(provide assert-equal?
+         assert)
 
 (define-syntax assert-equal?
   (syntax-rules ()

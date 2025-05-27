@@ -1,8 +1,6 @@
 #lang racket
 
-(require racket/fixnum)
-
-(require "utils.rkt")
+(require "deps.rkt")
 (require "AST.rkt")
 
 (display

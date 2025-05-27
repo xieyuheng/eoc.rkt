@@ -1,6 +1,6 @@
 #lang racket
 
-(require "utils.rkt")
+(require "deps.rkt")
 
 (provide (struct-out Int)
          (struct-out Prim)
