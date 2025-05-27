@@ -1,7 +1,6 @@
 #lang racket
 
 (require "deps.rkt")
-(require "AST.rkt")
 (require "lang-int.rkt")
 
 (assert-equal?

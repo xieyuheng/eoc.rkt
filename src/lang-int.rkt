@@ -1,7 +1,6 @@
 #lang racket
 
 (require "deps.rkt")
-(require "AST.rkt")
 
 (provide interpret-lang-int)
 
