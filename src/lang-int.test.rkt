@@ -33,3 +33,12 @@
   (pe-lang-int
    (parse-program '(program () (- 8 4)))))
  4)
+
+(define (test-pe program)
+  (assert-equal?
+   (interpret-lang-int program)
+   (interpret-lang-int (pe-lang-int program))))
+
+(test-pe (parse-program '(program () (+ 10 (- (+ 5 3))))))
+(test-pe (parse-program '(program () (+ 1 (+ 3 1)))))
+(test-pe (parse-program '(program () (- (+ 3 (- 5))))))
