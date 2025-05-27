@@ -12,7 +12,11 @@
 
 (define (parse-exp sexp)
   (match sexp
-    [(cons op args) (Prim op (map parse-exp args))]
-    [n
-     (cond [(fixnum? n) (Int n)]
-           [else (error 'parse-exp "expected an integer" n)])]))
+    [`(let ([,name ,rhs]) ,body)
+     (Let name (parse-exp rhs) (parse-exp body))]
+    [(cons op args)
+     (Prim op (map parse-exp args))]
+    [x
+     (cond [(fixnum? x) (Int x)]
+           [(symbol? x) (Var x)]
+           [else (error 'parse-exp "expected an integer" x)])]))

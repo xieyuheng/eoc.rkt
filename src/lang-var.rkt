@@ -11,5 +11,5 @@
       [(Var name) (dict-ref env name)]
       [(Let name rhs body)
        (define new-env (dict-set env name ((interpret-exp env) rhs)))
-       ((interpret-exp new-env) exp)]
+       ((interpret-exp new-env) body)]
       [else ((super interpret-exp env) exp)])))

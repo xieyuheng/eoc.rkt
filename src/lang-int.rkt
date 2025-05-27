@@ -7,7 +7,8 @@
 (define-class lang-int-class ()
   (define/public (interpret-program program)
     (match program
-      [(Program (list) exp) ((interpret-exp (list)) exp)]))
+      [(Program (list) exp)
+       ((interpret-exp (list)) exp)]))
 
   (define/public ((interpret-exp env) exp)
     (match exp
