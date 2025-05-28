@@ -1,4 +1,5 @@
-[lang-c-var] lang-c-var-mixin
+[lang-c-var] lang-c-var-mixin -- interpret-stmt
+[lang-c-var] lang-c-var-mixin -- interpret-tail
 
 [syntax] `parse-program` -- handle `env`
 [lang-int] `interpret-program` -- handle `env`
