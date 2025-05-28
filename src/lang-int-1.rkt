@@ -2,8 +2,7 @@
 
 (require "deps.rkt")
 
-(provide interpret-lang-int
-         pe-lang-int)
+(provide interpret-lang-int)
 
 (define (interpret-lang-int program)
   (match program
@@ -24,6 +23,8 @@
      (fx- (interpret-exp e1) (interpret-exp e2))]))
 
 ;; partial evaluation
+
+(provide pe-lang-int)
 
 (define (pe-lang-int program)
   (match program

@@ -13,3 +13,13 @@
 (define-data Var [name])
 (define-data Let [name rhs body])
 (define-data Program [info body])
+
+(provide (struct-out Assign)
+         (struct-out Return)
+         (struct-out Seq)
+         (struct-out CProgram))
+
+(define-data Assign [lhs rhs])
+(define-data Return [arg])
+(define-data Seq [head tail])
+(define-data CProgram [info blocks])

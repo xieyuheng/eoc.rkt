@@ -2,13 +2,14 @@
 
 (require rackunit)
 
-(provide assert-equal?
-         assert)
+(provide assert-equal?)
 
 (define-syntax assert-equal?
   (syntax-rules ()
     [(_ x y)
      (check-equal? x y)]))
+
+(provide assert)
 
 (define-syntax assert
   (syntax-rules ()

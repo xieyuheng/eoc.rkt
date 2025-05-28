@@ -1,5 +1,8 @@
+[lang-c-var] lang-c-var-mixin
+
 [syntax] `parse-program` -- handle `env`
 [lang-int] `interpret-program` -- handle `env`
+
 lang-var.test -- non-empty env
 
 2 Integers and Variables
