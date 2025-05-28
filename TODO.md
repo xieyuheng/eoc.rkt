@@ -1,3 +1,5 @@
+passes/010-uniquify.test.rkt
+
 [lang-c-var] parse
 [lang-c-var] test
 

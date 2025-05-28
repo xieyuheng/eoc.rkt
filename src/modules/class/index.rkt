@@ -19,5 +19,5 @@
 
 (define-syntax note
   (syntax-rules ()
-    [(_ name t)
+    [(_ x ...)
      (void)]))

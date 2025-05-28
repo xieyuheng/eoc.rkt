@@ -26,9 +26,9 @@
          (define new-env ((interpret-stmt env) stmt))
          ((interpret-tail new-env) next-tail)]))
 
-    (note interp-c-program (-> c-program-t value-t))
-    (define/public (interp-c-program c-program)
-      (match c-program
+    (note interp-c-program (-> program-t value-t))
+    (define/override (interp-program program)
+      (match program
         [(CProgram _ `((start . ,tail)))
          ((interpret-tail '()) tail)]))))
 
