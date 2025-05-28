@@ -5,11 +5,13 @@
 (provide lang-int-class)
 
 (define-class lang-int-class ()
+  (note interpret-program (-> program-t value-t))
   (define/public (interpret-program program)
     (match program
       [(Program (list) exp)
        ((interpret-exp (list)) exp)]))
 
+  (note interpret-exp (-> env-t exp-t value-t))
   (define/public ((interpret-exp env) exp)
     (match exp
       [(Int n) n]

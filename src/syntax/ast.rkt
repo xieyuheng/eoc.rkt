@@ -20,6 +20,6 @@
          (struct-out CProgram))
 
 (define-data Assign [lhs rhs])
-(define-data Return [arg])
-(define-data Seq [head tail])
-(define-data CProgram [info blocks])
+(define-data Return [exp])
+(define-data Seq [stmt tail])
+(define-data CProgram [info tails])
