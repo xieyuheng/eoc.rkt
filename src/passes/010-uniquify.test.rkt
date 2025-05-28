@@ -1,7 +1,7 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "../lang-var.rkt")
+(require "../langs/lang-var.rkt")
 (require "010-uniquify.rkt")
 
 (define lang (new lang-var-class))

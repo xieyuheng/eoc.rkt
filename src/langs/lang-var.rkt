@@ -1,6 +1,6 @@
 #lang racket
 
-(require "deps.rkt")
+(require "../deps.rkt")
 (require "lang-int.rkt")
 
 (provide lang-var-class)
