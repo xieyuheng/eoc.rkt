@@ -20,6 +20,13 @@
   (parse-program
    '(program
      ()
+     (+ (+ 1 2) (+ 3 (+ 4 5)))))))
+
+(format-program
+ (rco-program
+  (parse-program
+   '(program
+     ()
      (let ([a 42])
        (let ([b a])
          b))))))
@@ -29,7 +36,8 @@
        (rco-program
         (uniquify
          (parse-program
-          '(program ()
-                    (let ([x (+ 42 (- 10))])
-                      (+ x 10)))))))
+          '(program
+            ()
+            (let ([x (+ 42 (- 10))])
+              (+ x 10)))))))
  42)

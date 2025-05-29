@@ -11,11 +11,13 @@
      (define body-pair (rco-atom body))
      (define new-body (car body-pair))
      (define exp-map (cdr body-pair))
-     (cons (Let name (rco-exp rhs) new-body) exp-map)]
+     (cons new-body (dict-set exp-map name (rco-exp rhs)))]
     [(Prim op args)
+     (define pairs (map rco-atom args))
+     (define new-args (map car pairs))
+     (define exp-map (append* (map cdr pairs)))
      (define name (freshen-tmp))
-     (cons (Var name)
-           (list (cons name (Prim op (map rco-exp args)))))]))
+     (cons (Var name) (dict-set exp-map name (Prim op new-args)))]))
 
 (define (freshen-tmp)
   (gensym "tmp."))
