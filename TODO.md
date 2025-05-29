@@ -1,5 +1,3 @@
-syntax/print -- print-exp
-syntax/print -- print-program
 020-remove-complex-operands.test.rkt -- more tests
 
 [lang-c-var] parse

@@ -4,3 +4,4 @@
 
 (re-provide "ast.rkt")
 (re-provide "parse.rkt")
+(re-provide "format.rkt")

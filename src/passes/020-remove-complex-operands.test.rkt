@@ -7,11 +7,12 @@
 
 (define lang (new lang-var-class))
 
-(rco-program
- (parse-program
-  '(program ()
-            (let ([x (+ 42 (- 10))])
-              (+ x 10)))))
+(format-program
+ (rco-program
+  (parse-program
+   '(program ()
+             (let ([x (+ 42 (- 10))])
+               (+ x 10))))))
 
 (assert-equal?
  (send lang interpret-program
