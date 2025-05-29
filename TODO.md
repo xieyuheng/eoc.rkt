@@ -1,3 +1,5 @@
+020-remove-complex-operands.test.rkt
+
 [lang-c-var] parse
 [lang-c-var] test
 

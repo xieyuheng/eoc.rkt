@@ -5,21 +5,21 @@
 (define (freshen name)
   (gensym (string-append (symbol->string name) ".")))
 
-(define ((uniquify-exp env) exp)
+(define ((uniquify-exp name-table) exp)
   (match exp
     [(Var name)
-     (define found-name (dict-ref env name #f))
+     (define found-name (dict-ref name-table name #f))
      (Var (or found-name name))]
     [(Int n)
      (Int n)]
     [(Let name rhs body)
      (define fresh-name (freshen name))
-     (define new-env (dict-set env name fresh-name))
+     (define new-name-table (dict-set name-table name fresh-name))
      (Let fresh-name
-          ((uniquify-exp env) rhs)
-          ((uniquify-exp new-env) body))]
+          ((uniquify-exp name-table) rhs)
+          ((uniquify-exp new-name-table) body))]
     [(Prim op args)
-     (Prim op (map (uniquify-exp env) args))]))
+     (Prim op (map (uniquify-exp name-table) args))]))
 
 (provide uniquify)
 
