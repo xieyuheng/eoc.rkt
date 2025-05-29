@@ -8,11 +8,10 @@
     [(Var name) (cons (Var name) '())]
     [(Int n) (cons (Int n) '())]
     [(Let name rhs body)
-     (define rhs-pair (rco-atom rhs))
      (define body-pair (rco-atom body))
-     (cons (Let name (car rhs-pair) (car body-pair))
-           (append (cdr rhs-pair)
-                   (cdr body-pair)))]
+     (define new-body (car body-pair))
+     (define exp-map (cdr body-pair))
+     (cons (Let name (rco-exp rhs) new-body) exp-map)]
     [(Prim op args)
      (define name (freshen-tmp))
      (cons (Var name)

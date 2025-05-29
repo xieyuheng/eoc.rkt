@@ -10,9 +10,19 @@
 (format-program
  (rco-program
   (parse-program
-   '(program ()
-             (let ([x (+ 42 (- 10))])
-               (+ x 10))))))
+   '(program
+     ()
+     (let ([x (+ 42 (- 10))])
+       (+ x 10))))))
+
+(format-program
+ (rco-program
+  (parse-program
+   '(program
+     ()
+     (let ([a 42])
+       (let ([b a])
+         b))))))
 
 (assert-equal?
  (send lang interpret-program
