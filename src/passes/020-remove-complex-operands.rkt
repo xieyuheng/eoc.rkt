@@ -14,13 +14,9 @@
            (append (cdr rhs-pair)
                    (cdr body-pair)))]
     [(Prim op args)
-     (define pairs
-       (map (lambda (arg)
-              (define name (freshen-tmp))
-              (cons (Var name) (cons name (rco-exp arg))))
-            args))
-     (cons (Prim op (map car pairs))
-           (map cdr pairs))]))
+     (define name (freshen-tmp))
+     (cons (Var name)
+           (list (cons name (Prim op (map rco-exp args)))))]))
 
 (define (freshen-tmp)
   (gensym "tmp."))
@@ -31,6 +27,8 @@
     ['() base-exp]
     [(cons (cons name exp) rest-map)
      (make-lets rest-map (Let name exp base-exp))]))
+
+(provide rco-exp)
 
 (note rco-exp (-> exp-t exp-t))
 (define (rco-exp exp)
@@ -44,3 +42,9 @@
      (define new-args (map car pairs))
      (define exp-map (append* (map cdr pairs)))
      (make-lets exp-map (Prim op new-args))]))
+
+(provide rco-program)
+(define (rco-program program)
+  (match program
+    [(Program info body)
+     (Program info (rco-exp body))]))
