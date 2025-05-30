@@ -1,6 +1,6 @@
 # my-lisp.rkt
 
-Learn how to write compiler
+Learning how to write compiler
 from [Essentials of Compilation](https://github.com/IUCompilerCourse/Essentials-of-Compilation).
 
 ## Development
