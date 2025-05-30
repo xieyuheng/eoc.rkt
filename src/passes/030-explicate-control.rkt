@@ -26,16 +26,11 @@
 (note explicate-assign (-> name-t exp-t tail-t tail-t))
 (define (explicate-assign name rhs tail)
   (match rhs
-    [(Var name2)
-     (Seq (Assign (Var name) (Var name2)) tail)]
-    [(Int n)
-     (Seq (Assign (Var name) (Int n)) tail)]
     [(Let name2 rhs2 body)
      (define tail2 (explicate-tail body))
-     (define total-tail (tail-merge name tail2 tail))
-     (explicate-assign name2 rhs2 total-tail)]
-    [(Prim op args)
-     (Seq (Assign (Var name) (Prim op args)) tail)]))
+     (explicate-assign name2 rhs2 (tail-merge name tail2 tail))]
+    [_
+     (Seq (Assign (Var name) rhs) tail)]))
 
 (provide explicate-control)
 
