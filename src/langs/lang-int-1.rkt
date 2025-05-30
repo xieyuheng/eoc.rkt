@@ -2,9 +2,9 @@
 
 (require "../deps.rkt")
 
-(provide evaluate-lang-int)
+(provide evaluate-program)
 
-(define (evaluate-lang-int program)
+(define (evaluate-program program)
   (match program
     [(Program (list) exp) (evaluate-exp exp)]))
 
