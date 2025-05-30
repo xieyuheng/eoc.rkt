@@ -1,16 +1,7 @@
-# x-lisp
+# my-lisp.rkt
 
-## My Motive
-
-(1) Just learn how to write compiler
-for a language like scheme,
-it is a core skill.
-
-(2) x-lisp to geometer and canvas,
-as the elisp to emacs.
-
-(3) Use my-lisp to read EOPL,
-so that even the simple part will not be boring.
+Learn how to write compiler
+from [Essentials of Compilation](https://github.com/IUCompilerCourse/Essentials-of-Compilation).
 
 ## Development
 
