@@ -1,3 +1,7 @@
+030-explicate-control.test.rkt
+
+lang-var-checker
+lang-c-var-checker
 improve testing
 
 [lang-c-var] parse
