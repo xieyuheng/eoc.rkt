@@ -24,9 +24,9 @@
 
 ;; partial evaluation
 
-(provide pe-lang-int)
+(provide pe-program)
 
-(define (pe-lang-int program)
+(define (pe-program program)
   (match program
     [(Program (list) exp)
      (Program (list) (pe-exp exp))]))
