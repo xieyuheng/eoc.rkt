@@ -30,3 +30,15 @@
                   (let ([x.2 22])
                     (+ x.1 x.2)))])
          y)))))))
+
+(format-c-program
+ (explicate-control
+  (rco-program
+   (uniquify
+    (parse-program
+     '(program
+       ()
+       (let ([z (let ([y (let ([x 6])
+                           x)])
+                  y)])
+         z)))))))
