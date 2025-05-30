@@ -13,7 +13,15 @@
      (explicate-assign name rhs (explicate-tail body))]
     [(Prim op args)
      ;; assume args are atoms.
-     (Prim op args)]))
+     (Return (Prim op args))]))
+
+(note tail-merge (-> name-t tail-t tail-t tail-t))
+(define (tail-merge name top-tail bottom-tail)
+  (match top-tail
+    [(Return exp)
+     (Seq (Assign (Var name) exp) bottom-tail)]
+    [(Seq stmt next-tail)
+     (Seq stmt (tail-merge name next-tail bottom-tail))]))
 
 (note explicate-assign (-> name-t exp-t tail-t tail-t))
 (define (explicate-assign name rhs tail)
@@ -23,7 +31,9 @@
     [(Int n)
      (Seq (Assign (Var name) (Int n)) tail)]
     [(Let name2 rhs2 body)
-     (explicate-assign name2 rhs2 (Seq (Assign (Var name) body) tail))]
+     (define tail2 (explicate-tail body))
+     (define total-tail (tail-merge name tail2 tail))
+     (explicate-assign name2 rhs2 total-tail)]
     [(Prim op args)
      (Seq (Assign (Var name) (Prim op args)) tail)]))
 
