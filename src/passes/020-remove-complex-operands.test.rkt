@@ -32,7 +32,7 @@
          b))))))
 
 (assert-equal?
- (send lang interpret-program
+ (send lang evaluate-program
        (rco-program
         (uniquify
          (parse-program

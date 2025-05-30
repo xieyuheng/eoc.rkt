@@ -2,25 +2,25 @@
 
 (require "../deps.rkt")
 
-(provide interpret-lang-int)
+(provide evaluate-lang-int)
 
-(define (interpret-lang-int program)
+(define (evaluate-lang-int program)
   (match program
-    [(Program (list) exp) (interpret-exp exp)]))
+    [(Program (list) exp) (evaluate-exp exp)]))
 
-(define (interpret-exp exp)
+(define (evaluate-exp exp)
   (match exp
     [(Int n) n]
     [(Prim 'read (list))
      (define r (read))
      (cond [(fixnum? r) r]
-           [else (error 'interpret-exp "expected an integer" r)])]
+           [else (error 'evaluate-exp "expected an integer" r)])]
     [(Prim '- (list e))
-     (fx- 0 (interpret-exp e))]
+     (fx- 0 (evaluate-exp e))]
     [(Prim '+ (list e1 e2))
-     (fx+ (interpret-exp e1) (interpret-exp e2))]
+     (fx+ (evaluate-exp e1) (evaluate-exp e2))]
     [(Prim '- (list e1 e2))
-     (fx- (interpret-exp e1) (interpret-exp e2))]))
+     (fx- (evaluate-exp e1) (evaluate-exp e2))]))
 
 ;; partial evaluation
 

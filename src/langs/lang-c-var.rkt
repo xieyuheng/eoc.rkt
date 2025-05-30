@@ -9,28 +9,28 @@
   (class super-class
     (super-new)
 
-    (inherit interpret-exp)
+    (inherit evaluate-exp)
 
-    (note interpret-stmt (-> env-t stmt-t env-t))
-    (define/public ((interpret-stmt env) stmt)
+    (note evaluate-stmt (-> env-t stmt-t env-t))
+    (define/public ((evaluate-stmt env) stmt)
       (match stmt
         [(Assign (Var name) rhs)
-         (dict-set env name ((interpret-exp env) rhs))]))
+         (dict-set env name ((evaluate-exp env) rhs))]))
 
-    (note interpret-tail (-> env-t stmt-t value-t))
-    (define/public ((interpret-tail env) tail)
+    (note evaluate-tail (-> env-t stmt-t value-t))
+    (define/public ((evaluate-tail env) tail)
       (match tail
         [(Return exp)
-         ((interpret-exp env) exp)]
+         ((evaluate-exp env) exp)]
         [(Seq stmt next-tail)
-         (define new-env ((interpret-stmt env) stmt))
-         ((interpret-tail new-env) next-tail)]))
+         (define new-env ((evaluate-stmt env) stmt))
+         ((evaluate-tail new-env) next-tail)]))
 
     (note interp-c-program (-> program-t value-t))
     (define/override (interp-program program)
       (match program
         [(CProgram _ `((start . ,tail)))
-         ((interpret-tail '()) tail)]))))
+         ((evaluate-tail '()) tail)]))))
 
 (provide lang-c-var-class)
 

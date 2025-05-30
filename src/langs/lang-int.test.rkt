@@ -6,16 +6,16 @@
 (define lang (new lang-int-class))
 
 (assert-equal?
- (send lang interpret-program
+ (send lang evaluate-program
        (parse-program '(program () 1)))
  1)
 
 (assert-equal?
- (send lang interpret-program
+ (send lang evaluate-program
        (parse-program '(program () (- 8))))
  -8)
 
 (assert-equal?
- (send lang interpret-program
+ (send lang evaluate-program
        (parse-program '(program () (- 8 4))))
  4)
