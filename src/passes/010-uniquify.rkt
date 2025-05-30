@@ -2,8 +2,12 @@
 
 (require "../deps.rkt")
 
-(define (freshen name)
-  (gensym (string-append (symbol->string name) ".")))
+(provide uniquify)
+
+(define (uniquify program)
+  (match program
+    [(Program info body)
+     (Program info ((uniquify-exp (list)) body))]))
 
 (define ((uniquify-exp name-table) exp)
   (match exp
@@ -21,9 +25,5 @@
     [(Prim op args)
      (Prim op (map (uniquify-exp name-table) args))]))
 
-(provide uniquify)
-
-(define (uniquify program)
-  (match program
-    [(Program info body)
-     (Program info ((uniquify-exp (list)) body))]))
+(define (freshen name)
+  (gensym (string-append (symbol->string name) ".")))
