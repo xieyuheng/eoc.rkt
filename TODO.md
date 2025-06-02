@@ -1,4 +1,4 @@
-lang-var-checker
+quit using dictlang-var-checker
 lang-c-var-checker
 improve testing
 
