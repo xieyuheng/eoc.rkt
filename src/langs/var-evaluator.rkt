@@ -1,11 +1,11 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "lang-int.rkt")
+(require "int-evaluator.rkt")
 
-(provide lang-var-class)
+(provide var-evaluator-class)
 
-(define-class lang-var-class (lang-int-class)
+(define-class var-evaluator-class (int-evaluator-class)
   (define/override ((evaluate-exp env) exp)
     (match exp
       [(Var name) (dict-ref env name)]

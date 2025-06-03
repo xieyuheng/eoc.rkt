@@ -1,7 +1,7 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "lang-int-1.rkt")
+(require "int-1-evaluator.rkt")
 
 (assert-equal?
  (evaluate-program

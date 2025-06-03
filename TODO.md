@@ -1,14 +1,15 @@
-quit using dictlang-var-checker
-lang-c-var-checker
+var-checker
+c-var-evaluator
+
 improve testing
 
-[lang-c-var] parse
-[lang-c-var] test
+[syntax] parse -- c-var
+[syntax] test -- c-var
 
 [syntax] `parse-program` -- handle `env`
-[lang-int] `interpret-program` -- handle `env`
+[int-evaluator] `evaluate-program` -- handle `env`
 
-lang-var.test -- non-empty env
+var-evaluator.test -- non-empty env
 
 2 Integers and Variables
 3 Register Allocation

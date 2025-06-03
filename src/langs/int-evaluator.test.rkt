@@ -1,21 +1,21 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "lang-int.rkt")
+(require "int-evaluator.rkt")
 
-(define lang (new lang-int-class))
+(define evaluator (new int-evaluator-class))
 
 (assert-equal?
- (send lang evaluate-program
+ (send evaluator evaluate-program
        (parse-program '(program () 1)))
  1)
 
 (assert-equal?
- (send lang evaluate-program
+ (send evaluator evaluate-program
        (parse-program '(program () (- 8))))
  -8)
 
 (assert-equal?
- (send lang evaluate-program
+ (send evaluator evaluate-program
        (parse-program '(program () (- 8 4))))
  4)

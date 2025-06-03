@@ -1,10 +1,10 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "../langs/lang-var.rkt")
+(require "../langs/var-evaluator.rkt")
 (require "010-uniquify.rkt")
 
-(define lang (new lang-var-class))
+(define lang (new var-evaluator-class))
 
 (assert-equal?
  (send lang evaluate-program

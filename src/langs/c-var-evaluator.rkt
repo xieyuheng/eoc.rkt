@@ -1,11 +1,11 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "lang-var.rkt")
+(require "var-evaluator.rkt")
 
-(provide lang-c-var-mixin)
+(provide c-var-evaluator-mixin)
 
-(define (lang-c-var-mixin super-class)
+(define (c-var-evaluator-mixin super-class)
   (class super-class
     (super-new)
 
@@ -32,6 +32,6 @@
         [(CProgram _ `((start . ,tail)))
          ((evaluate-tail '()) tail)]))))
 
-(provide lang-c-var-class)
+(provide c-var-evaluator-class)
 
-(define lang-c-var-class (lang-c-var-mixin lang-var-class))
+(define c-var-evaluator-class (c-var-evaluator-mixin var-evaluator-class))

@@ -1,12 +1,12 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "../langs/lang-var.rkt")
+(require "../langs/var-evaluator.rkt")
 (require "010-uniquify.rkt")
 (require "020-remove-complex-operands.rkt")
 (require "030-explicate-control.rkt")
 
-(define lang (new lang-var-class))
+(define lang (new var-evaluator-class))
 
 (format-c-program
  (explicate-control

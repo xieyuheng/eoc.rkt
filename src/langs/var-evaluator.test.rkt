@@ -1,31 +1,31 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "lang-var.rkt")
+(require "var-evaluator.rkt")
 
-(define lang (new lang-var-class))
+(define evaluator (new var-evaluator-class))
 
 (assert-equal?
- (send lang evaluate-program
+ (send evaluator evaluate-program
        (parse-program '(program () 1)))
  1)
 
 (assert-equal?
- (send lang evaluate-program
+ (send evaluator evaluate-program
        (parse-program '(program () (- 8))))
  -8)
 
 (assert-equal?
- (send lang evaluate-program
+ (send evaluator evaluate-program
        (parse-program '(program () (- 8 4))))
  4)
 
 (assert-equal?
- (send lang evaluate-program
+ (send evaluator evaluate-program
        (parse-program '(program () (let ([x 4]) (- 8 x)))))
  4)
 
 ;; (assert-equal?
-;;  (send lang evaluate-program
+;;  (send evaluator evaluate-program
 ;;        (parse-program '(program ([x 4]) (- 8 x))))
 ;;  4)

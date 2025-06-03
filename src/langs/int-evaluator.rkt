@@ -2,9 +2,9 @@
 
 (require "../deps.rkt")
 
-(provide lang-int-class)
+(provide int-evaluator-class)
 
-(define-class lang-int-class ()
+(define-class int-evaluator-class ()
   (note evaluate-program (-> program-t value-t))
   (define/public (evaluate-program program)
     (match program
