@@ -1,4 +1,4 @@
-var-checker
+var-checker -- test
 c-var-evaluator
 
 improve testing
