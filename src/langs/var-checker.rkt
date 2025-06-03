@@ -1,7 +1,6 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "int-evaluator.rkt")
 
 (provide var-checker-class)
 
@@ -13,34 +12,43 @@
 
   (define/public (type-equal? t1 t2) (equal? t1 t2))
 
-  (define/public (check-type-equal? t1 t2 e)
+  (note check-type-equal? (-> type-t type-t exp-t))
+  (define/public (check-type-equal? t1 t2 exp)
     (unless (type-equal? t1 t2)
-      (error 'type-check "~a != ~a\nin ~v" t1 t2 e)))
+      (error 'type-check "~a != ~a\nin ~v" t1 t2 exp)))
 
-  (define/public (type-check-op op arg-types e)
-    (match (dict-ref (operator-types) op)
-      [`(,param-types . ,return-type)
-       (for ([at arg-types] [pt param-types])
-         (check-type-equal? at pt e))
-       return-type]))
+  (note type-check-op (-> op-t (list-t type-t) exp-t type-t))
+  (define/public (type-check-op op arg-types exp)
+    (match-define (cons expected-arg-types return-type)
+      (dict-ref (operator-types) op))
+    (for ([arg-type arg-types]
+          [expected-arg-type expected-arg-types])
+      (check-type-equal? arg-type expected-arg-type exp))
+    return-type)
 
-  (define/public (type-check-exp env)
-    (lambda (e)
-      (match e
-        [(Var x)  (values (Var x) (dict-ref env x))]
-        [(Int n)  (values (Int n) 'Integer)]
-        [(Prim op es)
-         (define-values (new-es ts)
-           (for/lists (exprs types) ([e es]) ((type-check-exp env) e)))
-         (values (Prim op new-es) (type-check-op op ts e))]
-        [(Let x e body)
-         (define-values (e^ Te) ((type-check-exp env) e))
-         (define-values (b Tb) ((type-check-exp (dict-set env x Te)) body))
-         (values (Let x e^ b) Tb)])))
+  (note type-check-exp (-> env-t exp-t (pair-t exp-t type-t)))
+  (define/public ((type-check-exp env) exp)
+    (match exp
+      [(Var name)
+       (cons (Var name) (dict-ref env name))]
+      [(Int value)
+       (cons (Int value) 'Integer)]
+      [(Prim op args)
+       (define arg-pairs (map (type-check-exp env) args))
+       (define args^ (map car arg-pairs))
+       (define types (map cdr arg-pairs))
+       (cons (Prim op args^) (type-check-op op types exp))]
+      [(Let name rhs body)
+       (match-define (cons rhs^ rhs-type)
+         ((type-check-exp env) rhs))
+       (match-define (cons body^ body-type)
+         ((type-check-exp (dict-set env name rhs-type)) body))
+       (cons (Let name rhs^ body^) body-type)]))
 
-  (define/public (type-check-program e)
-    (match e
+  (define/public (type-check-program program)
+    (match program
       [(Program info body)
-       (define-values (body^ Tb) ((type-check-exp '()) body))
-       (check-type-equal? Tb 'Integer body)
+       (match-define (cons body^ t)
+         ((type-check-exp '()) body))
+       (check-type-equal? t 'Integer body)
        (Program info body^)])))
