@@ -26,8 +26,8 @@
          (define new-env ((evaluate-stmt env) stmt))
          ((evaluate-tail new-env) next-tail)]))
 
-    (note interp-c-program (-> program-t value-t))
-    (define/override (interp-program program)
+    (note evaluate-program (-> program-t value-t))
+    (define/override (evaluate-program program)
       (match program
         [(CProgram _ `((start . ,tail)))
          ((evaluate-tail '()) tail)]))))
