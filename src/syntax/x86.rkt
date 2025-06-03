@@ -12,6 +12,23 @@
          (struct-out Block)
          (struct-out X86Program))
 
+;; <reg> ::= rsp | rbp | rax | rbx | rcx | rdx | rsi | rdi
+;;         | r8 | r9 | r10 | r11 | r12 | r13 | r14 | r15
+;; <arg> ::= (Imm <int>)
+;;         | (Reg <reg>)
+;;         | (Deref <reg> <int>)
+;; <instr> ::= (Instr addq (<arg> <arg>))
+;;           | (Instr subq (<arg> <arg>))
+;;           | (Instr negq (<arg>))
+;;           | (Instr movq (<arg> <arg>))
+;;           | (Instr pushq (<arg>))
+;;           | (Instr popq (<arg>))
+;;           | (Callq <label> <int>)
+;;           | (Retq)
+;;           | (Jmp <label>)
+;; <block> ::= (Block <info> (<instr> … ))
+;; <x86Int> ::= (X86Program <info> ((<label> . <block>) … ))
+
 (define-data Imm [value])
 (define-data Reg [name])
 (define-data Deref [reg offset])

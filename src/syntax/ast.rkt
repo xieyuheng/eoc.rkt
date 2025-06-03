@@ -8,6 +8,17 @@
          (struct-out Let)
          (struct-out Program))
 
+;; <type> ::= Integer
+;; <exp> ::= (Int <int>)
+;;         | (Prim 'read ())
+;;         | (Prim '- (<exp>))
+;;         | (Prim '+ (<exp> <exp>))
+;;         | (Prim '- (<exp> <exp>))
+;; ------
+;; <exp> ::= (Var <var>)
+;;        | (Let <var> <exp> <exp>)
+;; <LVar> ::= (Program ’() <exp>)
+
 (define-data Int [value])
 (define-data Prim [op args])
 (define-data Var [name])
@@ -18,6 +29,18 @@
          (struct-out Return)
          (struct-out Seq)
          (struct-out CProgram))
+
+;; <atm> ::= (Int <int>)
+;;         | (Var <var>)
+;; <exp> ::= <atm>
+;;         | (Prim 'read ())
+;;         | (Prim '- (<atm>))
+;;         | (Prim '+ (<atm> <atm>))
+;;         | (Prim '- (<atm> <atm>))
+;; <stmt> ::= (Assign (Var <var>) <exp>)
+;; <tail> ::= (Return <exp>)
+;;          | (Seq <stmt> <tail>)
+;; <CVar> ::= (CProgram <info> ((<label> . <tail>) … ))
 
 (define-data Assign [lhs rhs])
 (define-data Return [exp])

@@ -1,15 +1,3 @@
-c-var-evaluator
-
-improve testing
-
-[syntax] parse -- c-var
-[syntax] test -- c-var
-
-[syntax] `parse-program` -- handle `env`
-[int-evaluator] `evaluate-program` -- handle `env`
-
-var-evaluator.test -- non-empty env
-
 2 Integers and Variables
 3 Register Allocation
 4 Booleans and Conditionals
@@ -20,3 +8,15 @@ var-evaluator.test -- non-empty env
 9 Dynamic Typing
 10 Gradual Typing
 11 Generics
+
+# later
+
+var-evaluator -- non-empty env
+
+[syntax] parse -- c-var
+[syntax] test -- c-var
+c-var-evaluator -- test
+improve testing
+
+[syntax] `parse-program` -- handle `env`
+int-evaluator -- `evaluate-program` -- handle `env`
