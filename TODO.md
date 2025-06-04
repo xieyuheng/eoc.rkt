@@ -1,5 +1,6 @@
 > 2 Integers and Variables
 
+[syntax] format-x86-program
 [pass] 040-select-instructions -- fix test by format-x86-program
 
 [pass] 050-assign-homes
