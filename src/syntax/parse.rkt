@@ -1,7 +1,8 @@
 #lang racket
 
 (require "deps.rkt")
-(require "ast.rkt")
+(require "program.rkt")
+(require "c-program.rkt")
 
 (provide parse-program)
 

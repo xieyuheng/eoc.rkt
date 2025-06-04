@@ -2,7 +2,8 @@
 
 (require "deps.rkt")
 
-(re-provide "ast.rkt")
+(re-provide "program.rkt")
+(re-provide "c-program.rkt")
+(re-provide "x86-program.rkt")
 (re-provide "parse.rkt")
 (re-provide "format.rkt")
-(re-provide "x86.rkt")
