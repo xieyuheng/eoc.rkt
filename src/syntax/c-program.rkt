@@ -31,7 +31,7 @@
 (define (format-c-program c-program)
   (match c-program
     [(CProgram info tails)
-     `(c-program info ,(alist-map-value tails format-tail))]))
+     `(c-program ,info ,(alist-map-value tails format-tail))]))
 
 (define (format-tail tail)
   (match tail

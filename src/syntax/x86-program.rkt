@@ -1,6 +1,7 @@
 #lang racket
 
 (require "deps.rkt")
+(require "program.rkt")
 
 (provide (struct-out Imm)
          (struct-out Reg)
@@ -38,3 +39,45 @@
 (define-data Jmp [target])
 (define-data Block [info instr*])
 (define-data X86Program [info blocks])
+
+(provide format-x86-program)
+
+(note format-x86-program (-> x86-program-t sexp-t))
+(define (format-x86-program x86-program)
+  (match x86-program
+    [(X86Program info blocks)
+     `(x86-program ,info ,(alist-map-value blocks format-block))]))
+
+(note format-block (-> block-t sexp-t))
+(define (format-block block)
+  (match block
+    [(Block info instr*)
+     `(block ,info ,(map format-instr instr*))]))
+
+(note format-instr (-> instr-t string-t))
+(define (format-instr instr)
+  (match instr
+    [(Instr name arg*)
+     (~a #:separator " "
+         name (apply ~a #:separator ", " (map format-arg arg*)))]
+    [(Callq target arity)
+     (~a #:separator " "
+         "callq" (~a #:separator ", " target arity))]
+    [(Retq)
+     (~a #:separator " "
+         "retq")]
+    [(Jmp target)
+     (~a #:separator " "
+         "jmp" target)]))
+
+(note format-arg (-> arg-t string-t))
+(define (format-arg arg)
+  (match arg
+    [(Var name)
+     (~a name)]
+    [(Imm value)
+     (~a "$" value)]
+    [(Reg name)
+     (~a "%" name)]
+    [(Deref reg offset)
+     (~a offset "(" "%" reg ")")]))

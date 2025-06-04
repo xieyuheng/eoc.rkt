@@ -6,19 +6,19 @@
 (require "030-explicate-control.rkt")
 (require "040-select-instructions.rkt")
 
-;; format-x86-program
-(select-instructions
- (explicate-control
-  (rco-program
-   (uniquify
-    (parse-program
-     '(program
-       ()
-       (let ([y (let ([x 20])
-                  (+ x (let ([x 22]) x)))])
-         y)))))))
+(format-x86-program
+ (select-instructions
+  (explicate-control
+   (rco-program
+    (uniquify
+     (parse-program
+      '(program
+        ()
+        (let ([y (let ([x 20])
+                   (+ x (let ([x 22]) x)))])
+          y))))))))
 
-;; format-x86-program
+; format-x86-program
 (select-instructions
  (explicate-control
   (rco-program

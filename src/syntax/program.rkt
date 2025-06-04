@@ -30,8 +30,8 @@
 (note format-program (-> program-t sexp-t))
 (define (format-program program)
   (match program
-    [(Program (list) body)
-     `(program () ,(format-exp body))]))
+    [(Program info body)
+     `(program ,info ,(format-exp body))]))
 
 (provide format-exp)
 
