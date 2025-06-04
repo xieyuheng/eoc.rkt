@@ -6,6 +6,8 @@
 
 (require "../deps.rkt")
 
+(provide select-instructions)
+
 (note select-instructions (-> c-program-t x86-program-t))
 (define (select-instructions c-program)
   (match c-program

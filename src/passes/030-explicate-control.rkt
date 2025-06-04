@@ -8,7 +8,7 @@
 (define (explicate-control program)
   (match program
     [(Program info body)
-     (CProgram info (explicate-tail body))]))
+     (CProgram info (list (cons 'start (explicate-tail body))))]))
 
 (note explicate-tail (-> exp-t tail-t))
 (define (explicate-tail exp)

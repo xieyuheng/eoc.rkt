@@ -4,8 +4,10 @@
 (require "010-uniquify.rkt")
 (require "020-remove-complex-operands.rkt")
 (require "030-explicate-control.rkt")
+(require "040-select-instructions.rkt")
 
-(format-c-program
+;; format-x86-program
+(select-instructions
  (explicate-control
   (rco-program
    (uniquify
@@ -16,7 +18,8 @@
                   (+ x (let ([x 22]) x)))])
          y)))))))
 
-(format-c-program
+;; format-x86-program
+(select-instructions
  (explicate-control
   (rco-program
    (uniquify
@@ -28,7 +31,8 @@
                     (+ x.1 x.2)))])
          y)))))))
 
-(format-c-program
+;; format-x86-program
+(select-instructions
  (explicate-control
   (rco-program
    (uniquify
