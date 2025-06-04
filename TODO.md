@@ -1,8 +1,5 @@
 > 2 Integers and Variables
 
-[alist] replace dict-set
-[alist] replace dict-ref
-
 [syntax] move parse to program files
 [syntax] x86-program -- format-x86-program
 

@@ -8,7 +8,7 @@
 (define-class var-evaluator-class (int-evaluator-class)
   (define/override ((evaluate-exp env) exp)
     (match exp
-      [(Var name) (dict-ref env name)]
+      [(Var name) (alist-get-or-fail env name)]
       [(Let name rhs body)
        (define new-env (dict-set env name ((evaluate-exp env) rhs)))
        ((evaluate-exp new-env) body)]

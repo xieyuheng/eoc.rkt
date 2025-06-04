@@ -12,7 +12,7 @@
 (define ((uniquify-exp name-table) exp)
   (match exp
     [(Var name)
-     (define found-name (dict-ref name-table name #f))
+     (define found-name (alist-get name-table name #f))
      (Var (or found-name name))]
     [(Int n)
      (Int n)]

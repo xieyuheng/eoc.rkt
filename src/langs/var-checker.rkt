@@ -20,7 +20,7 @@
   (note type-check-op (-> op-t (list-t type-t) exp-t type-t))
   (define/public (type-check-op op arg-types exp)
     (match-define (cons expected-arg-types return-type)
-      (dict-ref (operator-types) op))
+      (alist-get-or-fail (operator-types) op))
     (for ([arg-type arg-types]
           [expected-arg-type expected-arg-types])
       (check-type-equal? arg-type expected-arg-type exp))
@@ -30,7 +30,7 @@
   (define/public ((type-check-exp env) exp)
     (match exp
       [(Var name)
-       (cons (Var name) (dict-ref env name))]
+       (cons (Var name) (alist-get-or-fail env name))]
       [(Int value)
        (cons (Int value) 'Integer)]
       [(Prim op args)

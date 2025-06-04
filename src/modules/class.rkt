@@ -14,10 +14,3 @@
        (class super-class
          (super-new)
          s ...))]))
-
-(provide note)
-
-(define-syntax note
-  (syntax-rules ()
-    [(_ x ...)
-     (void)]))
