@@ -1,6 +1,5 @@
 > 2 Integers and Variables
 
-[pass] 040-select-instructions -- select-instructions -- take c-program
 [pass] 040-select-instructions -- test
 
 [pass] 050-assign-homes

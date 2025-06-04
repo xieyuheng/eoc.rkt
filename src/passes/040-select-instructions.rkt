@@ -6,27 +6,35 @@
 
 (require "../deps.rkt")
 
+(note select-instructions (-> c-program-t x86-program-t))
+(define (select-instructions c-program)
+  (match c-program
+    [(CProgram info (list (cons 'start tail)))
+     (define block (Block '() (select-instr-tail tail)))
+     (X86Program info (list (cons 'start block)))]))
+
+(note select-instr-atm (-> atm-t arg-t))
 (define (select-instr-atm atm)
   (match atm
     [(Int value) (Imm value)]
     [(Var name) (Var name)]))
 
-(note select-instr-assign (-> var-t c-exp-t (list-t instr-t)))
-(define (select-instr-assign var rhs)
+(note select-instr-assign (-> arg-t c-exp-t (list-t instr-t)))
+(define (select-instr-assign arg rhs)
   (match rhs
     [(Int value)
-     (list (Instr 'movq (list (select-instr-atm rhs) var)))]
+     (list (Instr 'movq (list (select-instr-atm rhs) arg)))]
     [(Var name)
-     (list (Instr 'movq (list (select-instr-atm rhs) var)))]
+     (list (Instr 'movq (list (select-instr-atm rhs) arg)))]
     [(Prim 'read '())
      (list (Callq 'read_int)
-           (Instr 'movq (list (Reg 'rax) var)))]
+           (Instr 'movq (list (Reg 'rax) arg)))]
     [(Prim '- (list arg))
-     (list (Instr 'movq (list (select-instr-atm arg) var))
-           (Instr 'negq (list var)))]
+     (list (Instr 'movq (list (select-instr-atm arg) arg))
+           (Instr 'negq (list arg)))]
     [(Prim '+ (list arg1 arg2))
-     (list (Instr 'movq (list (select-instr-atm arg1) var))
-           (Instr 'addq (list (select-instr-atm arg2) var)))]))
+     (list (Instr 'movq (list (select-instr-atm arg1) arg))
+           (Instr 'addq (list (select-instr-atm arg2) arg)))]))
 
 (note select-instr-stmt (-> stmt-t (list-t instr-t)))
 (define (select-instr-stmt stmt)
@@ -40,6 +48,7 @@
     [(Assign var rhs)
      (select-instr-assign var rhs)]))
 
+(note select-instr-tail (-> tail-t (list-t instr-t)))
 (define (select-instr-tail tail)
   (match tail
     [(Seq stmt next-tail)
@@ -49,14 +58,5 @@
      (list (Callq 'read_int)
            (Jmp 'conclusion))]
     [(Return exp)
-     (append
-      (select-instr-assign (Reg 'rax) exp)
-      (list (Jmp 'conclusion)))]))
-
-;; (define (select-instructions p)
-;;   (match p
-;;     [(Program info (CFG (list (cons 'start t))))
-;;      (Program info
-;;               (CFG (list (cons 'start (Block '() (select-instr-tail t))))))]))
-
-;; select-instr-c-program
+     (append (select-instr-assign (Reg 'rax) exp)
+             (list (Jmp 'conclusion)))]))
