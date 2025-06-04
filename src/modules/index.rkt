@@ -1,8 +1,9 @@
 #lang racket
 
-(require "module/index.rkt")
+(require "module.rkt")
 
-(re-provide "module/index.rkt")
-(re-provide "test/index.rkt")
-(re-provide "data/index.rkt")
-(re-provide "class/index.rkt")
+(re-provide "module.rkt")
+(re-provide "test.rkt")
+(re-provide "data.rkt")
+(re-provide "class.rkt")
+(re-provide "alist.rkt")
