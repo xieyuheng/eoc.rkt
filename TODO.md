@@ -1,6 +1,5 @@
 > 2 Integers and Variables
 
-[syntax] move parse to program files
 [syntax] x86-program -- format-x86-program
 
 [pass] 040-select-instructions -- fix test by format-x86-program

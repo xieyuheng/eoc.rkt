@@ -5,4 +5,3 @@
 (re-provide "program.rkt")
 (re-provide "c-program.rkt")
 (re-provide "x86-program.rkt")
-(re-provide "parse.rkt")
