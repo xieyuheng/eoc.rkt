@@ -42,7 +42,7 @@
 ;;          | (Seq <stmt> <tail>)
 ;; <CVar> ::= (CProgram <info> ((<label> . <tail>) … ))
 
-(define-data Assign [lhs rhs])
+(define-data Assign [var rhs])
 (define-data Return [exp])
 (define-data Seq [stmt tail])
 (define-data CProgram [info tails])

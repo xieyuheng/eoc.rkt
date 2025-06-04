@@ -1,8 +1,7 @@
 > 2 Integers and Variables
 
-[pass] 040-select-instructions -- select-instr-stmt
-[pass] 040-select-instructions -- select-instr-tail
-[pass] 040-select-instructions -- select-instr-c-program
+[pass] 040-select-instructions -- select-instructions -- take c-program
+[pass] 040-select-instructions -- test
 
 [pass] 050-assign-homes
 [pass] 060-patch-instructions
