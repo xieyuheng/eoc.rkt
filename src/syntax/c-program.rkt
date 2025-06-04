@@ -1,6 +1,7 @@
 #lang racket
 
 (require "deps.rkt")
+(require "program.rkt")
 
 (provide (struct-out Assign)
          (struct-out Return)
@@ -23,3 +24,24 @@
 (define-data Return [exp])
 (define-data Seq [stmt tail])
 (define-data CProgram [info tails])
+
+(provide format-c-program)
+
+(note format-c-program (-> c-program-t sexp-t))
+(define (format-c-program c-program)
+  (match c-program
+    [(CProgram (list) tail)
+     `(c-program () ,(format-tail tail))]))
+
+(define (format-tail tail)
+  (match tail
+    [(Return exp)
+     `((return ,(format-exp exp)))]
+    [(Seq stmt next-tail)
+     (cons (format-stmt stmt)
+           (format-tail next-tail))]))
+
+(define (format-stmt stmt)
+  (match stmt
+    [(Assign (Var name) rhs)
+     `(assign ,name ,(format-exp rhs))]))
