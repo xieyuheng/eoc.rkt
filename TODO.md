@@ -1,4 +1,3 @@
-[lang] improve test -- use let* instead of define
 [pass] improve test -- extract testing function
 [pass] improve test -- test all passes
 merge partial evaluation to int-evaluator -- test with partial evaluation

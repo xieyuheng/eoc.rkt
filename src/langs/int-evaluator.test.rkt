@@ -4,10 +4,10 @@
 (require "int-evaluator.rkt")
 
 (define (test-program program-sexp value)
-  (define evaluator (new int-evaluator-class))
-  (define program (parse-program program-sexp))
-  (define result (send evaluator evaluate-program program))
-  (assert-equal? result value))
+  (let* ((evaluator (new int-evaluator-class))
+         (program (parse-program program-sexp))
+         (result (send evaluator evaluate-program program)))
+    (assert-equal? result value)))
 
 (test-program
  '(program () 1)

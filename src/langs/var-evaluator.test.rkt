@@ -4,14 +4,13 @@
 (require "var-evaluator.rkt")
 (require "var-checker.rkt")
 
-
 (define (test-program program-sexp value)
-  (define evaluator (new var-evaluator-class))
-  (define checker (new var-checker-class))
-  (define program (parse-program program-sexp))
-  (define checked-program (send checker type-check-program program))
-  (define result (send evaluator evaluate-program checked-program))
-  (assert-equal? result value))
+  (let* ((evaluator (new var-evaluator-class))
+         (checker (new var-checker-class))
+         (program (parse-program program-sexp))
+         (program (send checker type-check-program program))
+         (result (send evaluator evaluate-program program)))
+    (assert-equal? result value)))
 
 (test-program
  '(program () 1)
