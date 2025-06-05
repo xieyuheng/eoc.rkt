@@ -1,7 +1,5 @@
 > 2 Integers and Variables
 
-[alist] alist-set replace dict-set -- for real
-
 [pass] 040-select-instructions -- use `format` instead of `~a`
 
 [pass] 050-assign-homes

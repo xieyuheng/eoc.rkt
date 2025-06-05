@@ -15,7 +15,7 @@
     (define/public ((evaluate-stmt env) stmt)
       (match stmt
         [(Assign (Var name) rhs)
-         (dict-set env name ((evaluate-exp env) rhs))]))
+         (alist-set env name ((evaluate-exp env) rhs))]))
 
     (note evaluate-tail (-> env-t stmt-t value-t))
     (define/public ((evaluate-tail env) tail)

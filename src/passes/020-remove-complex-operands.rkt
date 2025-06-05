@@ -43,10 +43,10 @@
      (define body-pair (rco-atom body))
      (define new-body (car body-pair))
      (define exp-map (cdr body-pair))
-     (cons new-body (dict-set exp-map name (rco-exp rhs)))]
+     (cons new-body (alist-set exp-map name (rco-exp rhs)))]
     [(Prim op args)
      (define pairs (map rco-atom args))
      (define new-args (map car pairs))
      (define exp-map (append* (map cdr pairs)))
      (define name (freshen-tmp))
-     (cons (Var name) (dict-set exp-map name (Prim op new-args)))]))
+     (cons (Var name) (alist-set exp-map name (Prim op new-args)))]))

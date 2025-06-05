@@ -42,7 +42,7 @@
        (match-define (cons rhs^ rhs-type)
          ((type-check-exp env) rhs))
        (match-define (cons body^ body-type)
-         ((type-check-exp (dict-set env name rhs-type)) body))
+         ((type-check-exp (alist-set env name rhs-type)) body))
        (cons (Let name rhs^ body^) body-type)]))
 
   (define/public (type-check-program program)

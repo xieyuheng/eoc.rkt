@@ -10,6 +10,6 @@
     (match exp
       [(Var name) (alist-get-or-fail env name)]
       [(Let name rhs body)
-       (define new-env (dict-set env name ((evaluate-exp env) rhs)))
+       (define new-env (alist-set env name ((evaluate-exp env) rhs)))
        ((evaluate-exp new-env) body)]
       [else ((super evaluate-exp env) exp)])))
