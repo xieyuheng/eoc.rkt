@@ -4,5 +4,5 @@
 
 (define-syntax define-data
   (syntax-rules ()
-    [(_ data-name field-names)
-     (struct data-name field-names #:prefab)]))
+    ((_ data-name field-names)
+     (struct data-name field-names #:prefab))))

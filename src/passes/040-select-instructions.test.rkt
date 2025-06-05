@@ -14,8 +14,8 @@
      (parse-program
       '(program
         ()
-        (let ([y (let ([x 20])
-                   (+ x (let ([x 22]) x)))])
+        (let ((y (let ((x 20))
+                   (+ x (let ((x 22)) x)))))
           y))))))))
 
 (format-x86-program
@@ -26,9 +26,9 @@
      (parse-program
       '(program
         ()
-        (let ([y (let ([x.1 20])
-                   (let ([x.2 22])
-                     (+ x.1 x.2)))])
+        (let ((y (let ((x.1 20))
+                   (let ((x.2 22))
+                     (+ x.1 x.2)))))
           y))))))))
 
 (format-x86-program
@@ -39,7 +39,7 @@
      (parse-program
       '(program
         ()
-        (let ([z (let ([y (let ([x 6])
-                            x)])
-                   y)])
+        (let ((z (let ((y (let ((x 6))
+                            x)))
+                   y)))
           z))))))))

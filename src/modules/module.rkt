@@ -4,7 +4,7 @@
 
 (define-syntax re-provide
   (syntax-rules ()
-    [(_ path)
+    ((_ path)
      (begin
        (require path)
-       (provide (all-from-out path)))]))
+       (provide (all-from-out path))))))

@@ -4,5 +4,5 @@
 
 (define-syntax note
   (syntax-rules ()
-    [(_ x ...)
-     (void)]))
+    ((_ x ...)
+     (void))))

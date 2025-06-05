@@ -14,23 +14,23 @@
     (note evaluate-stmt (-> env-t stmt-t env-t))
     (define/public ((evaluate-stmt env) stmt)
       (match stmt
-        [(Assign (Var name) rhs)
-         (alist-set env name ((evaluate-exp env) rhs))]))
+        ((Assign (Var name) rhs)
+         (alist-set env name ((evaluate-exp env) rhs)))))
 
     (note evaluate-tail (-> env-t stmt-t value-t))
     (define/public ((evaluate-tail env) tail)
       (match tail
-        [(Return exp)
-         ((evaluate-exp env) exp)]
-        [(Seq stmt next-tail)
+        ((Return exp)
+         ((evaluate-exp env) exp))
+        ((Seq stmt next-tail)
          (define new-env ((evaluate-stmt env) stmt))
-         ((evaluate-tail new-env) next-tail)]))
+         ((evaluate-tail new-env) next-tail))))
 
     (note evaluate-program (-> program-t value-t))
     (define/override (evaluate-program program)
       (match program
-        [(CProgram _ `((start . ,tail)))
-         ((evaluate-tail '()) tail)]))))
+        ((CProgram _ `((start . ,tail)))
+         ((evaluate-tail '()) tail))))))
 
 (provide c-var-evaluator-class)
 

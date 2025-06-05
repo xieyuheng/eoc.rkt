@@ -22,10 +22,10 @@
 
 (assert-equal?
  (send evaluator evaluate-program
-       (parse-program '(program () (let ([x 4]) (- 8 x)))))
+       (parse-program '(program () (let ((x 4)) (- 8 x)))))
  4)
 
 ;; (assert-equal?
 ;;  (send evaluator evaluate-program
-;;        (parse-program '(program ([x 4]) (- 8 x))))
+;;        (parse-program '(program ((x 4)) (- 8 x))))
 ;;  4)

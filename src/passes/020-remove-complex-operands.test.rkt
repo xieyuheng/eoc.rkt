@@ -12,7 +12,7 @@
   (parse-program
    '(program
      ()
-     (let ([x (+ 42 (- 10))])
+     (let ((x (+ 42 (- 10))))
        (+ x 10))))))
 
 (format-program
@@ -27,8 +27,8 @@
   (parse-program
    '(program
      ()
-     (let ([a 42])
-       (let ([b a])
+     (let ((a 42))
+       (let ((b a))
          b))))))
 
 (assert-equal?
@@ -38,6 +38,6 @@
          (parse-program
           '(program
             ()
-            (let ([x (+ 42 (- 10))])
+            (let ((x (+ 42 (- 10))))
               (+ x 10)))))))
  42)
