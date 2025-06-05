@@ -1,4 +1,5 @@
-improve testing
+merge partial evaluation to int-evaluator -- test with partial evaluation
+[pass] improve test
 
 > 2 Integers and Variables
 

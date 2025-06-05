@@ -1,7 +1,7 @@
 #lang racket
 
 (require "record.rkt")
-(require "test.rkt")
+(require "assert.rkt")
 
 (define-record-type pare-t
   (kons x y)

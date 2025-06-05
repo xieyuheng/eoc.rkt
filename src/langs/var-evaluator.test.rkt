@@ -2,25 +2,29 @@
 
 (require "../deps.rkt")
 (require "var-evaluator.rkt")
+(require "var-checker.rkt")
 
-(define evaluator (new var-evaluator-class))
 
-(assert-equal?
- (send evaluator evaluate-program
-       (parse-program '(program () 1)))
+(define (test-program program-sexp value)
+  (define evaluator (new var-evaluator-class))
+  (define checker (new var-checker-class))
+  (define program (parse-program program-sexp))
+  (define checked-program (send checker type-check-program program))
+  (define result (send evaluator evaluate-program checked-program))
+  (assert-equal? result value))
+
+(test-program
+ '(program () 1)
  1)
 
-(assert-equal?
- (send evaluator evaluate-program
-       (parse-program '(program () (- 8))))
+(test-program
+ '(program () (- 8))
  -8)
 
-(assert-equal?
- (send evaluator evaluate-program
-       (parse-program '(program () (- 8 4))))
+(test-program
+ '(program () (- 8 4))
  4)
 
-(assert-equal?
- (send evaluator evaluate-program
-       (parse-program '(program () (let ((x 4)) (- 8 x)))))
+(test-program
+ '(program () (let ((x 4)) (- 8 x)))
  4)

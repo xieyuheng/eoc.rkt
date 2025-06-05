@@ -3,43 +3,39 @@
 (require "../deps.rkt")
 (require "c-var-evaluator.rkt")
 
-(define evaluator (new c-var-evaluator-class))
+(define (test-c-program c-program-sexp value)
+  (define evaluator (new c-var-evaluator-class))
+  (define c-program (parse-c-program c-program-sexp))
+  (define result (send evaluator evaluate-program c-program))
+  (assert-equal? result value))
 
-(assert-equal?
- (send evaluator evaluate-program
-       (parse-c-program
-        '(c-program
-          ()
-          ((start
-            (return 1))))))
+(test-c-program
+ '(c-program
+   ()
+   ((start
+     (return 1))))
  1)
 
 
-(assert-equal?
- (send evaluator evaluate-program
-       (parse-c-program
-        '(c-program
-          ()
-          ((start
-            (assign x 1)
-            (return x))))))
+(test-c-program
+ '(c-program
+   ()
+   ((start
+     (assign x 1)
+     (return x))))
  1)
 
-(assert-equal?
- (send evaluator evaluate-program
-       (parse-c-program
-        '(c-program
-          ()
-          ((start
-            (return (+ 1 2)))))))
+(test-c-program
+ '(c-program
+   ()
+   ((start
+     (return (+ 1 2)))))
  3)
 
-(assert-equal?
- (send evaluator evaluate-program
-       (parse-c-program
-        '(c-program
-          ()
-          ((start
-            (assign x (+ 1 2))
-            (return x))))))
+(test-c-program
+ '(c-program
+   ()
+   ((start
+     (assign x (+ 1 2))
+     (return x))))
  3)
