@@ -8,4 +8,3 @@
 (re-provide "class.rkt")
 (re-provide "note.rkt")
 (re-provide "alist.rkt")
-(re-provide "record.rkt")

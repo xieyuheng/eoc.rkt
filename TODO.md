@@ -1,4 +1,3 @@
-[module] remove record
 [pass] improve test -- extract testing function -- 030-explicate-control
 [pass] improve test -- extract testing function -- 040-select-instructions
 [pass] improve test -- test all passes
