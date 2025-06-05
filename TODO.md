@@ -1,4 +1,10 @@
+[lang] c-var-evaluator -- test
+
 > 2 Integers and Variables
+
+[lang] c-var-checker -- required by 050-assign-homes
+
+[syntax] extract X86Info
 
 [pass] 050-assign-homes
 [pass] 050-assign-homes -- test
@@ -14,15 +20,3 @@
 > 9 Dynamic Typing
 > 10 Gradual Typing
 > 11 Generics
-
-# later
-
-var-evaluator -- non-empty env
-
-[syntax] parse -- c-var
-[syntax] test -- c-var
-c-var-evaluator -- test
-improve testing
-
-[syntax] `parse-program` -- handle `env`
-int-evaluator -- `evaluate-program` -- handle `env`

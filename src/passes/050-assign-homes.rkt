@@ -4,12 +4,21 @@
 
 (provide assign-homes)
 
-(define (assign-homes p)
-  (match p
-    ((Program info es)
-     (Program (list (cons 'stack-space (calc-stack-space (cdr (car info)))))
-              (for/list ((ls es))
-                (cons (car ls) (assign-homes-block (cdr ls) (car info))))))))
+(note assign-homes (-> x86-program-t x86-program-t))
+
+(define (assign-homes x86-program)
+  (match x86-program
+    ((X86Program info blocks)
+     (X86Program
+      (list (cons 'stack-space (calc-stack-space (cdr (car info)))))
+      (map (lambda (ls)
+             (cons (car ls) (assign-homes-block (cdr ls) (car info))))
+           blocks)))))
+
+(define (assign-homes-block b ls)
+  (match b
+    ((Block info es)
+     (Block info (for/list ((e es)) (assign-homes-instr e ls))))))
 
 (define (calc-stack-space ls) (* 8 (length ls)))
 
@@ -32,8 +41,3 @@
     ((Instr op (list e1 e2))
      (Instr op (list (assign-homes-imm e1 ls) (assign-homes-imm e2 ls))))
     (else i)))
-
-(define (assign-homes-block b ls)
-  (match b
-    ((Block info es)
-     (Block info (for/list ((e es)) (assign-homes-instr e ls))))))

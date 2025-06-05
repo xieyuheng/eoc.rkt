@@ -8,6 +8,7 @@
 (require "050-assign-homes.rkt")
 
 (format-x86-program
+ ;; assign-homes
  (select-instructions
   (explicate-control
    (rco-program

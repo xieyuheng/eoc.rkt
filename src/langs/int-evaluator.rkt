@@ -8,7 +8,7 @@
   (note evaluate-program (-> program-t value-t))
   (define/public (evaluate-program program)
     (match program
-      ((Program (list) exp)
+      ((Program info exp)
        ((evaluate-exp (list)) exp))))
 
   (note evaluate-exp (-> env-t exp-t value-t))

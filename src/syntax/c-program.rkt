@@ -45,3 +45,42 @@
   (match stmt
     ((Assign (Var name) rhs)
      `(assign ,name ,(format-exp rhs)))))
+
+(provide parse-c-program)
+
+(note parse-c-program (-> sexp-t c-program-t))
+
+(define (parse-c-program sexp)
+  (match sexp
+    (`(c-program ,info ,tails)
+     (CProgram info (alist-map-value tails parse-tail)))))
+
+(note parse-tail (-> sexp-t tail-t))
+
+(define (parse-tail sexp)
+  (match sexp
+    (`((return sexp))
+     (Return (parse-exp sexp)))
+    ((cons head rest)
+     (Seq (parse-stmt head) (parse-tail rest)))))
+
+(note parse-stmt (-> sexp-t stmt-t))
+
+(define (parse-stmt sexp)
+  (match sexp
+    (`(assign ,name ,rhs)
+     (Assign (Var name) (parse-exp rhs)))))
+
+(note parse-exp (-> sexp-t c-exp-t))
+
+(define (parse-exp sexp)
+  (match sexp
+    ((cons op args)
+     (Prim op (map parse-atm args)))))
+
+(note parse-atm (-> sexp-t atm-t))
+
+(define (parse-atm x)
+  (cond ((fixnum? x) (Int x))
+        ((symbol? x) (Var x))
+        (else (error 'parse-exp "expected an integer" x))))

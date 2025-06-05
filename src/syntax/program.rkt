@@ -28,6 +28,7 @@
 (provide format-program)
 
 (note format-program (-> program-t sexp-t))
+
 (define (format-program program)
   (match program
     ((Program info body)
@@ -36,6 +37,7 @@
 (provide format-exp)
 
 (note format-exp (-> exp-t sexp-t))
+
 (define (format-exp exp)
   (match exp
     ((Var name) name)
@@ -48,10 +50,14 @@
 
 (provide parse-program)
 
+(note parse-program (-> sexp-t program-t))
+
 (define (parse-program sexp)
   (match sexp
-    (`(program () ,body)
-     (Program (list) (parse-exp body)))))
+    (`(program ,info ,body)
+     (Program info (parse-exp body)))))
+
+(note parse-exp (-> sexp-t exp-t))
 
 (define (parse-exp sexp)
   (match sexp
