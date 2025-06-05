@@ -1,7 +1,12 @@
+[lang] improve test -- use let* instead of define
+[pass] improve test -- extract testing function
+[pass] improve test -- test all passes
 merge partial evaluation to int-evaluator -- test with partial evaluation
-[pass] improve test
 
 > 2 Integers and Variables
+
+[lang] x86-evaluator
+[lang] x86-pseudo-evaluator
 
 [lang] c-var-checker -- required by 050-assign-homes
 

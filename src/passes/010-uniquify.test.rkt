@@ -4,26 +4,21 @@
 (require "../langs/var-evaluator.rkt")
 (require "010-uniquify.rkt")
 
-(define lang (new var-evaluator-class))
+(define (test-program program-sexp value)
+  (let* ((evaluator (new var-evaluator-class))
+         (program (parse-program program-sexp))
+         (program (uniquify program))
+         (result (send evaluator evaluate-program program)))
+    (assert-equal? result value)))
 
-(assert-equal?
- (send lang evaluate-program
-       (uniquify
-        (parse-program
-         '(program () (let ((x 4)) (- 8 x))))))
+(test-program
+ '(program () (let ((x 4)) (- 8 x)))
  4)
 
-
-(assert-equal?
- (send lang evaluate-program
-       (uniquify
-        (parse-program
-         '(program () (let ((x 32)) (+ (let ((x 10)) x) x))))))
+(test-program
+ '(program () (let ((x 32)) (+ (let ((x 10)) x) x)))
  42)
 
-(assert-equal?
- (send lang evaluate-program
-       (uniquify
-        (parse-program
-         '(program () (let ((x (let ((x 4)) (+ x 1)))) (+ x 2))))))
+(test-program
+ '(program () (let ((x (let ((x 4)) (+ x 1)))) (+ x 2)))
  7)
