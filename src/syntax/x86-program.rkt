@@ -56,6 +56,9 @@
 
 (note format-instr (-> instr-t string-t))
 (define (format-instr instr)
+  (~a (format-instr-no-ending instr) ";"))
+
+(define (format-instr-no-ending instr)
   (match instr
     ((Instr name arg*)
      (~a #:separator " "
