@@ -34,4 +34,5 @@
 
 (provide c-var-evaluator-class)
 
-(define c-var-evaluator-class (c-var-evaluator-mixin var-evaluator-class))
+(define c-var-evaluator-class
+  (c-var-evaluator-mixin var-evaluator-class))

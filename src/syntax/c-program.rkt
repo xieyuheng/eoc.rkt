@@ -59,7 +59,7 @@
 
 (define (parse-tail sexp)
   (match sexp
-    (`((return sexp))
+    (`((return ,sexp))
      (Return (parse-exp sexp)))
     ((cons head rest)
      (Seq (parse-stmt head) (parse-tail rest)))))
@@ -76,7 +76,8 @@
 (define (parse-exp sexp)
   (match sexp
     ((cons op args)
-     (Prim op (map parse-atm args)))))
+     (Prim op (map parse-atm args)))
+    (_ (parse-atm sexp))))
 
 (note parse-atm (-> sexp-t atm-t))
 

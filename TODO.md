@@ -1,5 +1,3 @@
-[lang] c-var-evaluator -- test
-
 > 2 Integers and Variables
 
 [lang] c-var-checker -- required by 050-assign-homes
