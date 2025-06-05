@@ -44,3 +44,10 @@
          (cons (cons key value) (cdr alist)))
         (else
          (cons (car alist) (alist-set (cdr alist) key value)))))
+
+(provide alist-cons)
+
+(note alist-cons (nu (K V) (-> (alist-t K V) K V (alist-t K V))))
+
+(define (alist-cons key value alist)
+  (cons (cons key value) alist))

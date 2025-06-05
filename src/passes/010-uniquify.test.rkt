@@ -9,16 +9,30 @@
          (program (parse-program program-sexp))
          (program (uniquify program))
          (result (send evaluator evaluate-program program)))
+    (write program-sexp) (newline)
+    (write (format-program program)) (newline)
     (assert-equal? result value)))
 
 (test-program
- '(program () (let ((x 4)) (- 8 x)))
+ '(program
+   ()
+   (let ((x 4))
+     (- 8 x)))
  4)
 
 (test-program
- '(program () (let ((x 32)) (+ (let ((x 10)) x) x)))
+ '(program
+   ()
+   (let ((x 32))
+     (+ (let ((x 10))
+          x)
+        x)))
  42)
 
 (test-program
- '(program () (let ((x (let ((x 4)) (+ x 1)))) (+ x 2)))
+ '(program
+   ()
+   (let ((x (let ((x 4))
+              (+ x 1))))
+     (+ x 2)))
  7)

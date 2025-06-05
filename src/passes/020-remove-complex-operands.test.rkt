@@ -5,39 +5,33 @@
 (require "010-uniquify.rkt")
 (require "020-remove-complex-operands.rkt")
 
-(define lang (new var-evaluator-class))
+(define (test-program program-sexp value)
+  (let* ((evaluator (new var-evaluator-class))
+         (program (parse-program program-sexp))
+         (program (uniquify program))
+         (program (rco-program program))
+         (result (send evaluator evaluate-program program)))
+    (write program-sexp) (newline)
+    (write (format-program program)) (newline)
+    (assert-equal? result value)))
 
-(format-program
- (rco-program
-  (parse-program
-   '(program
-     ()
-     (let ((x (+ 42 (- 10))))
-       (+ x 10))))))
+(test-program
+ '(program
+   ()
+   (let ((x (+ 42 (- 10))))
+     (+ x 10)))
+ 42)
 
-(format-program
- (rco-program
-  (parse-program
-   '(program
-     ()
-     (+ (+ 1 2) (+ 3 (+ 4 5)))))))
+(test-program
+ '(program
+   ()
+   (+ (+ 1 2) (+ 3 (+ 4 5))))
+ 15)
 
-(format-program
- (rco-program
-  (parse-program
-   '(program
-     ()
-     (let ((a 42))
-       (let ((b a))
-         b))))))
-
-(assert-equal?
- (send lang evaluate-program
-       (rco-program
-        (uniquify
-         (parse-program
-          '(program
-            ()
-            (let ((x (+ 42 (- 10))))
-              (+ x 10)))))))
+(test-program
+ '(program
+   ()
+   (let ((a 42))
+     (let ((b a))
+       b)))
  42)
