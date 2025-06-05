@@ -1,3 +1,5 @@
+use subscript to get shorter name
+quit using gensym -- use globl counter
 merge partial evaluation to int-evaluator -- test with partial evaluation
 
 > 2 Integers and Variables
