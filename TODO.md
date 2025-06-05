@@ -1,4 +1,3 @@
-quit using gensym -- use globl name count
 merge partial evaluation to int-evaluator -- test with partial evaluation
 
 > 2 Integers and Variables

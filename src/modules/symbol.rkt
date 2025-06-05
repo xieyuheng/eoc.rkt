@@ -4,8 +4,11 @@
 
 (provide freshen)
 
+(define name-count 0)
+
 (define (freshen name)
+  (set! name-count (+ name-count 1))
   (string->symbol
-   (string-to-subscript
-    (symbol->string
-     (gensym (symbol->string name))))))
+   (string-append
+    (symbol->string name)
+    (string-to-subscript (~a name-count)))))
