@@ -18,7 +18,8 @@
      (Int n)]
     [(Let name rhs body)
      (define fresh-name (freshen name))
-     (define new-name-table (alist-set name-table name fresh-name))
+     (define new-name-table
+       (alist-set name-table name fresh-name))
      (Let fresh-name
           ((uniquify-exp name-table) rhs)
           ((uniquify-exp new-name-table) body))]

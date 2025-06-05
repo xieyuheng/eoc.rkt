@@ -1,7 +1,5 @@
 > 2 Integers and Variables
 
-[pass] 040-select-instructions -- use `format` instead of `~a`
-
 [pass] 050-assign-homes
 [pass] 060-patch-instructions
 [pass] 070-prelude-and-conclusion
