@@ -54,11 +54,12 @@
     ((Block info instr*)
      `(block ,info ,(map format-instr instr*)))))
 
-(note format-instr (-> instr-t string-t))
+(note format-instr (-> instr-t (list-t string-t)))
 (define (format-instr instr)
-  (~a (format-instr-no-ending instr) ";"))
+  (list (format-instr-string instr)))
 
-(define (format-instr-no-ending instr)
+(note format-instr-string (-> instr-t string-t))
+(define (format-instr-string instr)
   (match instr
     ((Instr name arg*)
      (~a #:separator " "
