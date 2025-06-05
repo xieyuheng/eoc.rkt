@@ -1,4 +1,3 @@
-[pass] improve test -- extract testing function -- 030-explicate-control
 [pass] improve test -- extract testing function -- 040-select-instructions
 [pass] improve test -- test all passes
 merge partial evaluation to int-evaluator -- test with partial evaluation

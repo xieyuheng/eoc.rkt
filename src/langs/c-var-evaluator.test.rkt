@@ -4,9 +4,9 @@
 (require "c-var-evaluator.rkt")
 
 (define (test-c-program c-program-sexp value)
-  (let* ((evaluator (new c-var-evaluator-class))
-         (c-program (parse-c-program c-program-sexp))
-         (result (send evaluator evaluate-program c-program)))
+  (let* ((c-program (parse-c-program c-program-sexp))
+         (c-evaluator (new c-var-evaluator-class))
+         (result (send c-evaluator evaluate-c-program c-program)))
     (assert-equal? result value)))
 
 (test-c-program
