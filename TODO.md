@@ -1,14 +1,13 @@
-merge partial evaluation to int-evaluator -- test with partial evaluation
+[lang] int-1-evaluator -- pe-exp take env
+[lang] int-evaluator -- merge partial evaluation to int-evaluator
+[lang] int-evaluator -- test with partial evaluation
 
 > 2 Integers and Variables
 
 [lang] x86-evaluator
 [lang] x86-pseudo-evaluator
-
 [lang] c-var-checker -- required by 050-assign-homes
-
 [syntax] extract X86Info
-
 [pass] 050-assign-homes
 [pass] 050-assign-homes -- test
 [pass] 060-patch-instructions
