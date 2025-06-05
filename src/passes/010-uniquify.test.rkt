@@ -5,12 +5,12 @@
 (require "010-uniquify.rkt")
 
 (define (test-program program-sexp value)
-  (let* ((program0 (parse-program program-sexp))
-         (program1 (uniquify program0))
+  (let* ((program-0 (parse-program program-sexp))
+         (program-1 (uniquify program-0))
          (evaluator (new var-evaluator-class))
-         (result (send evaluator evaluate-program program1)))
-    (displayln (~a "000 " (format-program program0)))
-    (displayln (~a "010 " (format-program program1)))
+         (result (send evaluator evaluate-program program-1)))
+    (displayln (~a "000 " (format-program program-0)))
+    (displayln (~a "010 " (format-program program-1)))
     (assert-equal? result value)))
 
 (test-program

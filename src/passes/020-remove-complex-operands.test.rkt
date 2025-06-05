@@ -6,14 +6,14 @@
 (require "020-remove-complex-operands.rkt")
 
 (define (test-program program-sexp value)
-  (let* ((program0 (parse-program program-sexp))
-         (program1 (uniquify program0))
-         (program2 (rco-program program1))
+  (let* ((program-0 (parse-program program-sexp))
+         (program-1 (uniquify program-0))
+         (program-2 (rco-program program-1))
          (evaluator (new var-evaluator-class))
-         (result (send evaluator evaluate-program program2)))
-    (displayln (~a "000 " (format-program program0)))
-    (displayln (~a "010 " (format-program program1)))
-    (displayln (~a "020 " (format-program program2)))
+         (result (send evaluator evaluate-program program-2)))
+    (displayln (~a "000 " (format-program program-0)))
+    (displayln (~a "010 " (format-program program-1)))
+    (displayln (~a "020 " (format-program program-2)))
     (assert-equal? result value)))
 
 (test-program
