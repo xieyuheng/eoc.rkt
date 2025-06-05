@@ -25,6 +25,3 @@
           ((uniquify-exp new-name-table) body)))
     ((Prim op args)
      (Prim op (map (uniquify-exp name-table) args)))))
-
-(define (freshen name)
-  (gensym (string-append (symbol->string name) ".")))

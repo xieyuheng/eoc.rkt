@@ -12,6 +12,7 @@
 (provide rco-exp)
 
 (note rco-exp (-> exp-t exp-t))
+
 (define (rco-exp exp)
   (match exp
     ((Var name)
@@ -26,10 +27,8 @@
      (define bindings (append* (map cdr pairs)))
      (make-lets bindings (Prim op new-args)))))
 
-(define (freshen-tmp)
-  (gensym "tmp."))
-
 (note make-lets (-> (alist-t name-t exp-t) exp-t exp-t))
+
 (define (make-lets bindings base-exp)
   (match bindings
     ('()
@@ -38,6 +37,7 @@
      (make-lets rest-map (Let name exp base-exp)))))
 
 (note rco-atom (-> exp-t (pair-t exp-t (alist-t name-t exp-t))))
+
 (define (rco-atom exp)
   (match exp
     ((Var name)
@@ -54,7 +54,7 @@
      (define pairs (map rco-atom args))
      (define new-args (map car pairs))
      (define bindings (append* (map cdr pairs)))
-     (define name (freshen-tmp))
+     (define name (freshen 'tmp))
      (cons (Var name)
            ;; the order matters,
            ;; current binding should be at the outside.

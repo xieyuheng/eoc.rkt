@@ -9,3 +9,4 @@
 (re-provide "note.rkt")
 (re-provide "alist.rkt")
 (re-provide "string.rkt")
+(re-provide "symbol.rkt")

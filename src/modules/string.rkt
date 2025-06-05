@@ -1,7 +1,5 @@
 #lang racket
 
-(require "note.rkt")
-
 (provide string-to-subscript)
 
 (define (string-to-subscript string)
