@@ -1,15 +1,31 @@
 #lang racket
 
 (require "../deps.rkt")
-(require "int-evaluator.rkt")
 
 (provide var-evaluator-class)
 
-(define-class var-evaluator-class (int-evaluator-class)
-  (define/override ((evaluate-exp env) exp)
+(define-class var-evaluator-class ()
+  (note evaluate-program (-> program-t value-t))
+  (define/public (evaluate-program program)
+    (match program
+      ((Program info exp)
+       ((evaluate-exp (list)) exp))))
+
+  (note evaluate-exp (-> env-t exp-t value-t))
+  (define/public ((evaluate-exp env) exp)
     (match exp
+      ((Int n) n)
+      ((Prim 'read (list))
+       (define r (read))
+       (cond ((fixnum? r) r)
+             (else (error 'evaluate-exp "expected an integer" r))))
+      ((Prim '- (list e))
+       (fx- 0 ((evaluate-exp env) e)))
+      ((Prim '+ (list e1 e2))
+       (fx+ ((evaluate-exp env) e1) ((evaluate-exp env) e2)))
+      ((Prim '- (list e1 e2))
+       (fx- ((evaluate-exp env) e1) ((evaluate-exp env) e2)))
       ((Var name) (alist-get-or-fail env name))
       ((Let name rhs body)
        (define new-env (alist-set env name ((evaluate-exp env) rhs)))
-       ((evaluate-exp new-env) body))
-      (else ((super evaluate-exp env) exp)))))
+       ((evaluate-exp new-env) body)))))

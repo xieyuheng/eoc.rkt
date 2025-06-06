@@ -1,8 +1,9 @@
 [lang] int-1-evaluator -- pe-exp take env
-[lang] int-evaluator -- merge partial evaluation to int-evaluator
-[lang] int-evaluator -- test with partial evaluation
+[lang] int-evaluator -- merge partial evaluation to var-evaluator
+[lang] var-evaluator -- test with partial evaluation
 
 [lang] quit using inheritance between languages -- that is purely for teaching
+
 [lang] merge `syntax/` with `langs/` -- code should be org-ed by lang -- program c-program x86-program
 
 > 2 Integers and Variables
