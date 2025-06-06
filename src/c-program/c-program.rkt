@@ -17,7 +17,7 @@
 ;; <stmt> ::= (Assign (Var <var>) <exp>)
 ;; <tail> ::= (Return <exp>)
 ;;          | (Seq <stmt> <tail>)
-;; <CVar> ::= (CProgram <info> ((<label> . <tail>) … ))
+;; <c-program> ::= (CProgram <info> ((<label> . <tail>) … ))
 
 (define-data Assign (var rhs))
 (define-data Return (exp))

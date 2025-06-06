@@ -10,14 +10,13 @@
 
 ;; <type> ::= Integer
 ;; <exp> ::= (Int <int>)
+;;         | (Var <var>)
 ;;         | (Prim 'read ())
 ;;         | (Prim '- (<exp>))
 ;;         | (Prim '+ (<exp> <exp>))
 ;;         | (Prim '- (<exp> <exp>))
-;; ------
-;; <exp> ::= (Var <var>)
-;;        | (Let <var> <exp> <exp>)
-;; <LVar> ::= (Program '() <exp>)
+; ;        | (Let <var> <exp> <exp>)
+;; <program> ::= (Program '() <exp>)
 
 (define-data Int (value))
 (define-data Prim (op args))

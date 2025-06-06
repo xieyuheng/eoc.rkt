@@ -1,7 +1,5 @@
 > 2 Integers and Variables
 
-[lang] x86-evaluator
-[lang] x86-pseudo-evaluator
 [lang] c-checker -- required by 050-assign-homes
 [syntax] extract X86Info
 [pass] 050-assign-homes
@@ -18,3 +16,8 @@
 > 9 Dynamic Typing
 > 10 Gradual Typing
 > 11 Generics
+
+# later
+
+[lang] x86-evaluator
+[lang] x86-pseudo-evaluator
