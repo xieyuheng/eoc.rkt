@@ -17,7 +17,7 @@
 ;; ------
 ;; <exp> ::= (Var <var>)
 ;;        | (Let <var> <exp> <exp>)
-;; <LVar> ::= (Program ’() <exp>)
+;; <LVar> ::= (Program '() <exp>)
 
 (define-data Int (value))
 (define-data Prim (op args))

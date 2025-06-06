@@ -2,7 +2,7 @@
 
 [lang] x86-evaluator
 [lang] x86-pseudo-evaluator
-[lang] c-var-checker -- required by 050-assign-homes
+[lang] c-checker -- required by 050-assign-homes
 [syntax] extract X86Info
 [pass] 050-assign-homes
 [pass] 050-assign-homes -- test
