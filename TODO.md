@@ -1,6 +1,3 @@
-[program] quit using inheritance class
-[c-program] quit using inheritance class
-
 > 2 Integers and Variables
 
 [lang] x86-evaluator

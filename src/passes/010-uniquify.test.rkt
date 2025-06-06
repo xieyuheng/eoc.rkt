@@ -6,7 +6,7 @@
 (define (test-program program-sexp value)
   (let* ((program-0 (parse-program program-sexp))
          (program-1 (uniquify program-0))
-         (evaluator (new var-evaluator-class))
+         (evaluator (new evaluator-class))
          (result (send evaluator evaluate-program program-1)))
     (displayln (~a "000 " (format-program program-0)))
     (displayln (~a "010 " (format-program program-1)))

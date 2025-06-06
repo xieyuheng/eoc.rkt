@@ -2,11 +2,11 @@
 
 (require "deps.rkt")
 (require "c-program.rkt")
-(require "c-var-evaluator.rkt")
+(require "c-evaluator.rkt")
 
 (define (test-c-program c-program-sexp value)
   (let* ((c-program (parse-c-program c-program-sexp))
-         (c-evaluator (new c-var-evaluator-class))
+         (c-evaluator (new c-evaluator-class))
          (result (send c-evaluator evaluate-c-program c-program)))
     (assert-equal? result value)))
 

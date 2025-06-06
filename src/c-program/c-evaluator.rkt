@@ -3,9 +3,9 @@
 (require "deps.rkt")
 (require "c-program.rkt")
 
-(provide c-var-evaluator-class)
+(provide c-evaluator-class)
 
-(define-class c-var-evaluator-class (var-evaluator-class)
+(define-class c-evaluator-class (evaluator-class)
   (inherit evaluate-exp)
 
   (note evaluate-stmt (-> env-t stmt-t env-t))

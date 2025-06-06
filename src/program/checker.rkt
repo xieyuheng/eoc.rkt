@@ -3,9 +3,9 @@
 (require "deps.rkt")
 (require "program.rkt")
 
-(provide var-checker-class)
+(provide checker-class)
 
-(define-class var-checker-class ()
+(define-class checker-class ()
   (define/public (operator-types)
     '((+ . ((Integer Integer) . Integer))
       (- . ((Integer Integer) . Integer))

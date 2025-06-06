@@ -3,9 +3,9 @@
 (require "deps.rkt")
 (require "program.rkt")
 
-(provide var-evaluator-class)
+(provide evaluator-class)
 
-(define-class var-evaluator-class ()
+(define-class evaluator-class ()
   (note evaluate-program (-> program-t value-t))
   (define/public (evaluate-program program)
     (match program
