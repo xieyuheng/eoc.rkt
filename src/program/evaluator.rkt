@@ -16,6 +16,7 @@
   (define/public ((evaluate-exp env) exp)
     (match exp
       ((Int n) n)
+      ((Var name) (alist-get-or-fail env name))
       ((Prim 'read (list))
        (define r (read))
        (cond ((fixnum? r) r)
@@ -26,7 +27,6 @@
        (fx+ ((evaluate-exp env) e1) ((evaluate-exp env) e2)))
       ((Prim '- (list e1 e2))
        (fx- ((evaluate-exp env) e1) ((evaluate-exp env) e2)))
-      ((Var name) (alist-get-or-fail env name))
       ((Let name rhs body)
        (define new-env (alist-set env name ((evaluate-exp env) rhs)))
        ((evaluate-exp new-env) body)))))
