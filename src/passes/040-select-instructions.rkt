@@ -4,7 +4,7 @@
 ;; variables, so we add an AST node of the form (Var var) to the arg
 ;; nonterminal of the x86Int abstract syntax.
 
-(require "../deps.rkt")
+(require "deps.rkt")
 
 (provide select-instructions)
 

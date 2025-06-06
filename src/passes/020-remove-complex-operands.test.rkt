@@ -1,7 +1,6 @@
 #lang racket
 
-(require "../deps.rkt")
-(require "../langs/var-evaluator.rkt")
+(require "deps.rkt")
 (require "010-uniquify.rkt")
 (require "020-remove-complex-operands.rkt")
 

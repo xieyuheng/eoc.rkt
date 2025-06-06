@@ -1,6 +1,6 @@
-[lang] quit using inheritance between languages -- that is purely for teaching
-
-[lang] merge `syntax/` with `langs/` -- code should be org-ed by lang -- program c-program x86-program
+[lang] mv `syntax/` to program c-program x86-program
+[program] quit using inheritance class
+[c-program] quit using inheritance class
 
 > 2 Integers and Variables
 

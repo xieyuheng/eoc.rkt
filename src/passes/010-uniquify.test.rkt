@@ -1,7 +1,6 @@
 #lang racket
 
-(require "../deps.rkt")
-(require "../langs/var-evaluator.rkt")
+(require "deps.rkt")
 (require "010-uniquify.rkt")
 
 (define (test-program program-sexp value)

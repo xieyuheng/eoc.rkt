@@ -1,6 +1,6 @@
 #lang racket
 
-(require "../deps.rkt")
+(require "deps.rkt")
 
 (provide uniquify)
 

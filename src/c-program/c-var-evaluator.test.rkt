@@ -1,6 +1,6 @@
 #lang racket
 
-(require "../deps.rkt")
+(require "deps.rkt")
 (require "c-var-evaluator.rkt")
 
 (define (test-c-program c-program-sexp value)
