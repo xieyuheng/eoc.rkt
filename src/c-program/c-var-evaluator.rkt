@@ -1,6 +1,7 @@
 #lang racket
 
 (require "deps.rkt")
+(require "c-program.rkt")
 
 (provide c-var-evaluator-class)
 

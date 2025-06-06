@@ -1,7 +1,6 @@
 #lang racket
 
 (require "deps.rkt")
-(require "program.rkt")
 
 (provide (struct-out Assign)
          (struct-out Return)

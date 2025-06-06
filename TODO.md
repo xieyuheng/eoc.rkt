@@ -1,4 +1,3 @@
-[lang] mv `syntax/` to program c-program x86-program
 [program] quit using inheritance class
 [c-program] quit using inheritance class
 

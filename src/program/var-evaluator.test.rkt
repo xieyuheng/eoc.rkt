@@ -1,6 +1,7 @@
 #lang racket
 
-(require "../deps.rkt")
+(require "deps.rkt")
+(require "program.rkt")
 (require "var-evaluator.rkt")
 (require "var-checker.rkt")
 

@@ -2,4 +2,4 @@
 
 (require "../deps.rkt")
 
-(re-provide "x86-program.rkt")
+(re-provide "../deps.rkt")
