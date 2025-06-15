@@ -18,8 +18,8 @@
     (displayln (~a "010 " (format-program program-1)))
     (displayln (~a "020 " (format-program program-2)))
     (displayln (~a "030 " (format-c-program c-program-3)))
-    (assert-equal? result value)
-    (assert-equal? c-result value)))
+    (assert-equal result value)
+    (assert-equal c-result value)))
 
 (test-program
  '(program

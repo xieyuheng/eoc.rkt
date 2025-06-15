@@ -21,8 +21,8 @@
     (displayln (~a "020 " (format-program program-2)))
     (displayln (~a "030 " (format-c-program c-program-3)))
     (displayln (~a "040 " (format-x86-program x86-program-4)))
-    (assert-equal? result value)
-    (assert-equal? c-result value)))
+    (assert-equal result value)
+    (assert-equal c-result value)))
 
 (test-program
  '(program

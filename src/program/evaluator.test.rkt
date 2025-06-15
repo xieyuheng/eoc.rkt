@@ -11,7 +11,7 @@
          (program (send checker type-check-program program))
          (evaluator (new evaluator-class))
          (result (send evaluator evaluate-program program)))
-    (assert-equal? result value)))
+    (assert-equal result value)))
 
 (test-program
  '(program () 1)

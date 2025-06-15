@@ -2,9 +2,9 @@
 
 (require rackunit)
 
-(provide assert-equal?)
+(provide assert-equal)
 
-(define-syntax assert-equal?
+(define-syntax assert-equal
   (syntax-rules ()
     ((_ x y)
      (check-equal? x y))))

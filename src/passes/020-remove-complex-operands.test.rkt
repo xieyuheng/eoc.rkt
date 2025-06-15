@@ -13,7 +13,7 @@
     (displayln (~a "000 " (format-program program-0)))
     (displayln (~a "010 " (format-program program-1)))
     (displayln (~a "020 " (format-program program-2)))
-    (assert-equal? result value)))
+    (assert-equal result value)))
 
 (test-program
  '(program

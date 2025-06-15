@@ -8,7 +8,7 @@
   (let* ((c-program (parse-c-program c-program-sexp))
          (c-evaluator (new c-evaluator-class))
          (result (send c-evaluator evaluate-c-program c-program)))
-    (assert-equal? result value)))
+    (assert-equal result value)))
 
 (test-c-program
  '(c-program
