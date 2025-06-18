@@ -3,6 +3,6 @@
 (require "../deps.rkt")
 
 (re-provide "../deps.rkt")
-(re-provide "../program/index.rkt")
-(re-provide "../c-program/index.rkt")
-(re-provide "../x86-program/index.rkt")
+(re-provide "../lang/index.rkt")
+(re-provide "../c-lang/index.rkt")
+(re-provide "../x86-lang/index.rkt")

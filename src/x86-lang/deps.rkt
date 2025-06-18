@@ -3,4 +3,4 @@
 (require "../deps.rkt")
 
 (re-provide "../deps.rkt")
-(re-provide "../program/index.rkt")
+(re-provide "../lang/index.rkt")
