@@ -3,8 +3,8 @@
 (require "deps.rkt")
 (require "010-uniquify.rkt")
 
-(define (test-program program-sexp value)
-  (let* ((program-0 (parse-program program-sexp))
+(define (test-program sexp value)
+  (let* ((program-0 (parse-program sexp))
          (program-1 (uniquify program-0))
          (evaluator (new evaluator-class))
          (result (send evaluator evaluate-program program-1)))

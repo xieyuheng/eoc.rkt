@@ -4,8 +4,8 @@
 (require "010-uniquify.rkt")
 (require "020-remove-complex-operands.rkt")
 
-(define (test-program program-sexp value)
-  (let* ((program-0 (parse-program program-sexp))
+(define (test-program sexp value)
+  (let* ((program-0 (parse-program sexp))
          (program-1 (uniquify program-0))
          (program-2 (rco-program program-1))
          (evaluator (new evaluator-class))

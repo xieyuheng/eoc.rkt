@@ -5,8 +5,8 @@
 (require "evaluator.rkt")
 (require "checker.rkt")
 
-(define (test-program program-sexp value)
-  (let* ((program (parse-program program-sexp))
+(define (test-program sexp value)
+  (let* ((program (parse-program sexp))
          (checker (new checker-class))
          (program (send checker type-check-program program))
          (evaluator (new evaluator-class))
